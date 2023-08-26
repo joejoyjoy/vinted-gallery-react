@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400&display=swap");
 @import "./sass/";
 
 body {
@@ -30,4 +30,13 @@ a {
   &:hover {
     text-decoration: underline;
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.filter-blur {
+  filter: blur(10px);
+  filter: brightness(50%);
 }
