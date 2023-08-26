@@ -1,5 +1,6 @@
 const currentTask = process.env.npm_lifecycle_event;
 const path = require("path");
+const Dotenv = require("dotenv-webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -15,6 +16,9 @@ const config = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       favicon: "./public/favicon.ico",
+    }),
+    new Dotenv({
+      safe: false,
     }),
   ],
   mode: "development",
