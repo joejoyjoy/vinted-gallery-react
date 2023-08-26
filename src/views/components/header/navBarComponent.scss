@@ -1,0 +1,76 @@
+@import "../../../sass/";
+
+.nav-bar-component {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+
+  &__nav {
+    margin: 30px auto;
+    width: 100%;
+    max-width: 1600px;
+
+    @include devices(lg) {
+      margin: 20px auto;
+    }
+
+    @include devices(md) {
+      margin: 15px auto;
+    }
+
+    &--wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 80px;
+
+      @include devices(lg) {
+        padding: 0 30px;
+      }
+
+      @include devices(md) {
+        padding: 0 15px;
+      }
+
+      &__logo {
+        display: flex;
+        flex-direction: column;
+
+        &--title {
+          display: flex;
+          gap: 0.5rem;
+
+          &__name {
+            font-weight: 100;
+
+            b {
+              color: $color-primary;
+            }
+          }
+
+          &__alias {
+            display: flex;
+            gap: 0.15rem;
+
+            span,
+            h2 {
+              font-size: 14px;
+            }
+          }
+        }
+        &--credits {
+          font-size: 11px;
+          font-weight: 300;
+        }
+      }
+
+      &__actions {
+        display: flex;
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+}

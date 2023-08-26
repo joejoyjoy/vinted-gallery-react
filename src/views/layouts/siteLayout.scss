@@ -1,0 +1,34 @@
+@import "../../sass/";
+
+.site-layout {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+
+  &__responsive {
+    margin: 30px auto;
+    width: 100%;
+    max-width: 1600px;
+
+    @include devices(lg) {
+      margin: 20px auto;
+    }
+
+    @include devices(md) {
+      margin: 15px auto;
+    }
+
+    &--wrapper {
+      padding: 0 80px;
+      
+      @include devices(lg) {
+        padding: 0 30px;
+      }
+
+      @include devices(md) {
+        padding: 0 15px;
+      }
+    }
+  }
+}

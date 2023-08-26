@@ -1,8 +1,8 @@
-import NavBarComponent from "./components/header";
 import "./app.scss";
+import SiteLayout from "./views/layouts/SiteLayout";
 
 function App() {
-  return <NavBarComponent />;
+  return <SiteLayout />;
 }
 
 export default App;
