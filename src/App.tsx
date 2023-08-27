@@ -1,8 +1,13 @@
-import "./app.scss";
 import SiteLayout from "./views/layouts/SiteLayout";
+import UserLikesProvider from "./context/LikesContext";
+import "./app.scss";
 
 function App() {
-  return <SiteLayout />;
+  return (
+    <UserLikesProvider>
+      <SiteLayout />
+    </UserLikesProvider>
+  );
 }
 
 export default App;

@@ -25,3 +25,45 @@
     }
   }
 }
+
+@mixin button-default {
+  padding: 0.9rem 1.5rem 0.6rem;
+  min-width: 125px;
+  color: inherit;
+  font-size: 18px;
+  border: 0.1em solid $color-secondary;
+  border-radius: 999px;
+  background: none;
+  transition: $transition;
+
+  &:hover {
+    background-color: rgba($background-color-important, 0.85);
+
+    .marked::after {
+      width: 100%;
+    }
+  }
+}
+
+@mixin button-primary {
+  padding: 0.9rem 1.5rem 0.6rem;
+  min-width: 125px;
+  color: $color-important;
+  font-size: 18px;
+  border: 0.1em solid rgba(#fff, 0.55);
+  border-radius: 999px;
+  background-color: rgba(#fff, 0.55);
+  transition: $transition;
+
+  &:hover {
+    background-color: rgba(#fff, 0.85);
+
+    .marked::after {
+      width: 100%;
+    }
+  }
+
+  .marked::after {
+    background-color: $color-important;
+  }
+}

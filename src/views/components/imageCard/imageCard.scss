@@ -9,6 +9,12 @@
   background-size: cover;
   background-position: center;
 
+  &:hover {
+    .image-card-component__details {
+      opacity: 1;
+    }
+  }
+
   &__image {
     display: block;
     width: 100%;
@@ -31,10 +37,12 @@
     position: absolute;
     inset: 0;
     color: #fff;
-    font-size: 25px;
+    font-size: 21px;
     text-align: center;
     text-transform: capitalize;
     background-color: rgba($background-color-important, 0.55);
+    opacity: 0;
+    transition: $transition;
 
     &--title {
       display: block;
@@ -50,7 +58,7 @@
         display: block;
         content: "";
         margin: 10px auto;
-        height: 3px;
+        height: 2px;
         width: 120px;
         background-color: $background-color-primary;
       }
@@ -68,15 +76,35 @@
       white-space: nowrap;
     }
 
-    &--button {
+    &--actions {
+      display: flex;
+      gap: 1rem;
       position: absolute;
-      bottom: 1rem;
-      padding: 1rem 2rem;
-      color: inherit;
-      font-size: inherit;
-      border: 0.1em solid $color-secondary;
-      border-radius: 999px;
-      background: none;
+      bottom: 1.25rem;
+
+      &__like {
+        @include button-default();
+      }
+
+      &__more {
+        @include button-primary();
+      }
+    }
+  }
+
+  &__isLikes {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.6rem;
+    border: 0;
+    border-radius: 0.75rem;
+    background-color: #fff;
+
+    img {
+      display: block;
+      width: 20px;
+      height: 20px;
     }
   }
 }
