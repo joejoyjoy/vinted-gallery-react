@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import "./homePage.scss";
-import { dummyJSON } from "../../../constants";
-import Spinner from "../../UI/spinner/Spinner";
 import ImageCard from "../../components/imageCard/ImageCard";
+import Spinner from "../../UI/spinner/Spinner";
+import { dummyJSON } from "../../../constants";
 import { PhotoArr } from "../../types";
+import "./homePage.scss";
 
 const PEXELS_API_KEY = process.env.PEXELS_API_KEY;
 
@@ -18,11 +18,11 @@ const HomePage = () => {
 
   const elementRef = useRef<HTMLDivElement | null>(null);
 
-  const apiURL = `https://api.pexels.com/v1/curated?orientation=landscape&page=${
-    pagination * 1
-  }&per_page=40
-  `;
-  // const apiURL = "";
+  // const apiURL = `https://api.pexels.com/v1/curated?orientation=landscape&page=${
+  //   pagination * 1
+  // }&per_page=40
+  // `;
+  const apiURL = "";
 
   const onIntersection = (entries: IntersectionObserverEntry[]) => {
     const firstEntry = entries[0];
@@ -64,7 +64,7 @@ const HomePage = () => {
   return (
     <section className="main-content">
       <div className="main-content__grid">
-        {pictures.map((photo: PhotoArr) => {
+        {dummyJSON.map((photo: PhotoArr) => {
           return <ImageCard key={photo.id} data={photo} />;
         })}
       </div>

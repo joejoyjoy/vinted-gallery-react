@@ -1,22 +1,13 @@
-import {
-  createContext,
-  useState,
-  useEffect,
-  Dispatch,
-  SetStateAction,
-  ReactNode,
-} from "react";
+import { createContext, useState, useEffect, ReactNode } from "react";
 
 export interface UserLikesInterface {
   userLikes: Array<number>;
-  setUserLikes: Dispatch<SetStateAction<number[]>>;
   addOneLike: (imageId: number) => void;
   isLikedPicture: (imageId: number) => boolean;
 }
 
 const defaultState: UserLikesInterface = {
   userLikes: [],
-  setUserLikes: () => {},
   addOneLike: () => {},
   isLikedPicture: () => false,
 };
@@ -81,7 +72,7 @@ export default function UserLikesProvider({
 
   return (
     <UserLikesContext.Provider
-      value={{ userLikes, setUserLikes, addOneLike, isLikedPicture }}
+      value={{ userLikes, addOneLike, isLikedPicture }}
     >
       {children}
     </UserLikesContext.Provider>

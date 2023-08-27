@@ -1,0 +1,54 @@
+@import "../../../sass/";
+
+.likes-page {
+  width: 100%;
+  margin: 0 auto;
+
+  &__nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    outline: inherit;
+
+    &:hover {
+      img {
+        @include slideToLeftAnimation;
+      }
+    }
+    img {
+      height: 18px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
+    margin-top: 30px;
+
+    @include devices(lg) {
+      margin-top: 20px;
+    }
+
+    @include devices(md) {
+      margin-top: 15px;
+    }
+  }
+}
+
+@keyframes slideToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
