@@ -1,0 +1,12 @@
+.all-photos-section-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
+}
+
+.all-photos-section-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 128px;
+}

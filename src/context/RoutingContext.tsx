@@ -3,26 +3,31 @@ import { createContext, useState, ReactNode, useEffect } from "react";
 export interface RoutingInterface {
   homePageQuery: boolean;
   handleHomePageChange: (boolean: boolean) => void;
-  isLoading: boolean;
 }
 
 const defaultState = {
   homePageQuery: true,
   handleHomePageChange: () => {},
-  isLoading: true,
 } as RoutingInterface;
 
 export const RoutingContext = createContext(defaultState);
 
 export default function RoutingProvider({ children }: { children: ReactNode }) {
   const [homePageQuery, setHomePageQuery] = useState<boolean>(true);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const handleHomePageChange = (boolean: boolean) => {
     const searchParams = new URLSearchParams(window.location.search);
 
     if (boolean) {
-      return searchParams.delete("page");
+      searchParams.delete("page");
+
+      window.history.replaceState(
+        {},
+        "",
+        `${window.location.pathname}${searchParams.toString()}`
+      );
+
+      return setHomePageQuery(true);
     }
 
     if (!boolean) {
@@ -45,11 +50,9 @@ export default function RoutingProvider({ children }: { children: ReactNode }) {
 
     if (valueParam === "favorites") {
       setHomePageQuery(false);
-      setIsLoading(false);
     }
     if (valueParam !== "favorites") {
       setHomePageQuery(true);
-      setIsLoading(false);
     }
   }, []);
 
@@ -58,7 +61,6 @@ export default function RoutingProvider({ children }: { children: ReactNode }) {
       value={{
         homePageQuery,
         handleHomePageChange,
-        isLoading,
       }}
     >
       {children}

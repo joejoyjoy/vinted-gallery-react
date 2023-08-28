@@ -62,8 +62,19 @@
       width: 100%;
     }
   }
+}
 
-  .marked::after {
-    background-color: $color-important;
+@mixin button-secondary {
+  padding: 1rem 1.5rem;
+  width: fit-content;
+  color: #fff;
+  font-size: 18px;
+  border: 0;
+  border-radius: 0.35rem;
+  background-color: $color-important;
+  transition: $transition;
+
+  &:hover {
+    background-color: rgba($color-important, 0.85);
   }
 }

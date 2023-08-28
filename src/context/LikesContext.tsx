@@ -1,8 +1,10 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
+import { constructArrayOfLikedPhoto } from "../utils/constructArrayOfLikedPhoto";
+import { LikedPhoto, PhotoArr } from "../views/types";
 
 export interface UserLikesInterface {
-  userLikes: Array<number>;
-  addOneLike: (imageId: number) => void;
+  userLikes: Array<LikedPhoto>;
+  addOneLike: (data: PhotoArr) => void;
   isLikedPicture: (imageId: number) => boolean;
 }
 
@@ -14,11 +16,11 @@ const defaultState: UserLikesInterface = {
 
 export const UserLikesContext = createContext(defaultState);
 
-let localUserLikes: number[] = [];
+let localUserLikes: LikedPhoto[] = [];
 
 const storedData = localStorage.getItem("userLikes");
 if (storedData !== null) {
-  localUserLikes = JSON.parse(storedData) as number[];
+  localUserLikes = JSON.parse(storedData) as LikedPhoto[];
 }
 
 export default function UserLikesProvider({
@@ -26,19 +28,23 @@ export default function UserLikesProvider({
 }: {
   children: ReactNode;
 }) {
-  const [userLikes, setUserLikes] = useState<number[]>(localUserLikes || []);
+  const [userLikes, setUserLikes] = useState<LikedPhoto[]>(localUserLikes || []);
 
-  const addOneLike = (imageId: number) => {
-    if (imageId.toString().length >= 8) {
+  const addOneLike = (data: PhotoArr) => {
+    const likedPhoto = constructArrayOfLikedPhoto(data);
+
+    if (likedPhoto.id.toString().length >= 8) {
       const existingIndex = userLikes.findIndex(
-        (likedId) => likedId === imageId
+        (liked) => liked.id === likedPhoto.id
       );
 
       if (existingIndex === -1) {
-        setUserLikes([...userLikes, imageId]);
+        setUserLikes([...userLikes, likedPhoto]);
       } else {
-        const newUserLikes = userLikes.filter((likedId) => likedId !== imageId);
-        setUserLikes(newUserLikes);
+        const deleteUserLike = userLikes.filter(
+          (liked) => liked.id !== likedPhoto.id
+        );
+        setUserLikes(deleteUserLike);
       }
     } else {
       console.error("No such image ID recognized");
@@ -48,7 +54,7 @@ export default function UserLikesProvider({
   const isLikedPicture = (imageId: number) => {
     if (imageId.toString().length >= 8) {
       const existingIndex = userLikes.findIndex(
-        (likedId) => likedId === imageId
+        (liked) => liked.id === imageId
       );
 
       if (existingIndex === -1) {

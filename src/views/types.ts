@@ -2,13 +2,22 @@ interface PhotoArr {
   id: number;
   url: string;
   photographer: string;
+  photographer_url: string;
   avg_color: string;
   src: {
     original: string;
-    landscape: string;
-    tiny: string;
   };
-  alt: string;
 }
 
-export type { PhotoArr };
+interface LikedPhoto {
+  id: number;
+  url: string;
+  photographer: string;
+  photographer_url: string;
+  avg_color: string;
+  src: {
+    original: string;
+  };
+}
+
+export type { PhotoArr, LikedPhoto };

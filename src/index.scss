@@ -27,10 +27,6 @@ button {
   cursor: pointer;
 }
 
-.hidden {
-  display: none;
-}
-
 .filter-blur {
   filter: blur(10px);
   filter: brightness(50%);
@@ -46,7 +42,7 @@ button {
     display: block;
     width: 0;
     height: 2px;
-    background-color: #fff;
+    background-color: $color-important;
     opacity: 0.5;
     transition: $transition;
   }

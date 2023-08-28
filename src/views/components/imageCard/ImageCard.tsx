@@ -1,10 +1,10 @@
 import { useState, useContext, useEffect } from "react";
-import ImageLoader from "../../UI/imageLoader/ImageLoader";
+import { UserLikesContext } from "../../../context/LikesContext";
 import { extractDataFromUrl } from "../../../utils/extractDataFromUrl";
+import ImageLoader from "../../UI/imageLoader/ImageLoader";
+import SvgHeart from "../../../assets/svg/heart-solid.svg";
 import { PhotoArr } from "../../types";
 import "./imageCard.scss";
-import { UserLikesContext } from "../../../context/LikesContext";
-import SvgHeart from "../../../assets/svg/heart-solid.svg";
 
 const ImageCard = ({ data }: { data: PhotoArr }) => {
   const { id, src, url, avg_color, photographer } = data;
@@ -19,8 +19,8 @@ const ImageCard = ({ data }: { data: PhotoArr }) => {
 
   const alt = extractDataFromUrl(url);
 
-  const onLike = (imageId: number) => {
-    addOneLike(imageId);
+  const onLike = (data: PhotoArr) => {
+    addOneLike(data);
   };
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const ImageCard = ({ data }: { data: PhotoArr }) => {
         <p className="image-card-component__details--author">{photographer}</p>
         <div className="image-card-component__details--actions">
           <button
-            onClick={() => onLike(id)}
+            onClick={() => onLike(data)}
             className="image-card-component__details--actions__like"
           >
             <span className="marked">{isLiked ? "Unlike" : "Favorite"}</span>
@@ -62,7 +62,7 @@ const ImageCard = ({ data }: { data: PhotoArr }) => {
       </div>
       {isLiked ? (
         <button
-          onClick={() => onLike(id)}
+          onClick={() => onLike(data)}
           className="image-card-component__isLikes"
         >
           <img src={SvgHeart} alt="SVG solid red heart" />
