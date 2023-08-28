@@ -37,7 +37,7 @@
     position: absolute;
     inset: 0;
     color: $color-primary_light;
-    font-size: 21px;
+    font-size:clamp(16px, 5vw, 21px);
     text-align: center;
     text-transform: capitalize;
     background-color: rgba($background-important_light, 0.55);
@@ -81,6 +81,10 @@
       gap: 1rem;
       position: absolute;
       bottom: 1.25rem;
+
+      @include devices(phone) {
+        bottom: 0.75rem;
+      }
 
       &__like {
         @include button-default();

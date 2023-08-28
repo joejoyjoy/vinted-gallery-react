@@ -1,5 +1,51 @@
+@import "../../../sass/";
+
+.liked-photo-section-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+
+  @include devices(lg) {
+    margin-bottom: 20px;
+  }
+
+  @include devices(md) {
+    margin-bottom: 15px;
+  }
+
+  &__title {
+    font-size: clamp(21px, 5vw, 28px);
+  }
+
+  &__action {
+    display: flex;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    outline: inherit;
+
+    &:hover {
+      img {
+        @include slideToLeftAnimation;
+      }
+    }
+
+    img {
+      display: block;
+      width: 26px;
+      height: 26px;
+    }
+  }
+}
+
 .liked-photo-section-grid {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
+
+  @include devices(md) {
+    gap: 1rem;
+  }
 }

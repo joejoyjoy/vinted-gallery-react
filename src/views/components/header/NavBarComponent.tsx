@@ -33,7 +33,7 @@ const NavBarComponent = () => {
           </div>
           <div className="nav-bar-component__nav--wrapper__actions">
             <span className="nav-bar-component__nav--wrapper__actions--theme">
-              Theme:
+              <span>Theme:</span>
               <Theme />
             </span>
             <button

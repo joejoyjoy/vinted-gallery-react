@@ -24,13 +24,25 @@
       @content;
     }
   }
+
+  @if $breakpoint == xs {
+    @media (max-width: 520px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == phone {
+    @media (max-width: 385px) {
+      @content;
+    }
+  }
 }
 
 @mixin button-default {
   padding: 0.9rem 1.5rem 0.6rem;
   min-width: 125px;
   color: inherit;
-  font-size: 18px;
+  font-size: clamp(12px, 4.5vw, 18px);
   border: 0.1em solid $color-secondary;
   border-radius: 999px;
   background: none;
@@ -47,13 +59,18 @@
   .marked::after {
     background-color: $color-important_dark;
   }
+
+  @include devices(phone) {
+    padding: 0.5rem 0.75rem 0.4rem;
+    min-width: 100px;
+  }
 }
 
 @mixin button-primary {
   padding: 0.9rem 1.5rem 0.6rem;
   min-width: 125px;
   color: $color-important_light;
-  font-size: 18px;
+  font-size: clamp(12px, 4.5vw, 18px);
   border: 0.1em solid rgba($color-primary_light, 0.55);
   border-radius: 999px;
   background-color: rgba($color-primary_light, 0.55);
@@ -65,6 +82,11 @@
     .marked::after {
       width: 100%;
     }
+  }
+
+  @include devices(phone) {
+    padding: 0.5rem 0.75rem 0.4rem;
+    min-width: 100px;
   }
 }
 

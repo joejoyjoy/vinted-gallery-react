@@ -28,6 +28,14 @@ button {
   cursor: pointer;
 }
 
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .filter-blur {
   filter: blur(10px);
   filter: brightness(50%);

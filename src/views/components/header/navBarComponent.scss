@@ -61,6 +61,10 @@
             display: flex;
             gap: 0.15rem;
 
+            @include devices(xs) {
+              display: none;
+            }
+
             span,
             h2 {
               font-size: 14px;
@@ -89,9 +93,19 @@
         font-size: 14px;
         color: $color-secondary;
 
+        @include devices(xs) {
+          gap: 1rem;
+        }
+
         &--theme {
           display: flex;
           align-items: center;
+
+          @include devices(xs) {
+            span {
+              display: none;
+            }
+          }
         }
 
         &--liked {
