@@ -5,10 +5,12 @@ import { limitNumber } from "../../../utils/limitNumber";
 import HeartIcon from "../../../assets/svg/heart-regular.svg";
 import "./navBarComponent.scss";
 import Theme from "../../UI/theme/Theme";
+import { ModalContext } from "../../../context/ModalContext";
 
 const NavBarComponent = () => {
   const { userLikes } = useContext(UserLikesContext);
   const { handleHomePageChange } = useContext(RoutingContext);
+  const { isModalOpen, setIsModalOpen } = useContext(ModalContext);
 
   return (
     <header className="nav-bar-component">
@@ -31,6 +33,9 @@ const NavBarComponent = () => {
               <a href="https://www.pexels.com">Photos provided by Pexels</a>
             </div>
           </div>
+          <button onClick={() => setIsModalOpen(!isModalOpen)}>
+            OverFlow Hidden
+          </button>
           <div className="nav-bar-component__nav--wrapper__actions">
             <span className="nav-bar-component__nav--wrapper__actions--theme">
               <span>Theme:</span>
