@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { UserLikesContext } from "../../../context/LikesContext";
+import { ModalContext } from "../../../context/ModalContext";
 import { extractDataFromUrl } from "../../../utils/extractDataFromUrl";
 import ImageLoader from "../../UI/imageLoader/ImageLoader";
 import SvgHeart from "../../../assets/svg/heart-solid.svg";
@@ -13,6 +14,7 @@ const ImageCard = ({ data }: { data: PhotoArr }) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const { userLikes, addOneLike, isLikedPicture } =
     useContext(UserLikesContext);
+  const { openPhotoModal } = useContext(ModalContext);
 
   const lowQuality = "?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=20&w=30";
   const highQuality = "?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=340&w=525";
@@ -55,7 +57,10 @@ const ImageCard = ({ data }: { data: PhotoArr }) => {
           >
             <span className="marked">{isLiked ? "Unlike" : "Favorite"}</span>
           </button>
-          <button className="image-card-component__details--actions__more">
+          <button
+            onClick={() => openPhotoModal(data)}
+            className="image-card-component__details--actions__more"
+          >
             <span className="marked">See more</span>
           </button>
         </div>

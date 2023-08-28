@@ -1,0 +1,66 @@
+@import "../../../../../sass/";
+
+.photo-modal-content-header {
+  display: flex;
+  justify-content: space-between;
+
+  &__left {
+    color: inherit;
+    font-weight: 500;
+    text-decoration: none;
+
+    &--photographer {
+      margin: 0;
+      margin-bottom: 3px;
+    }
+
+    &--socials {
+      display: inline-flex;
+      gap: 0.5rem;
+      color: $color-secondary;
+
+      p {
+        margin: 0;
+
+        &:hover {
+          color: rgba($color-secondary, 0.75);
+        }
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    gap: 0.5rem;
+
+    &--like {
+      @include simple-button;
+
+      img {
+        width: 21px;
+      }
+    }
+
+    &--download {
+      @include simple-button($color-main);
+      color: $color-primary_light;
+      text-decoration: none;
+
+      &:hover {
+        background: rgba($color-main, 0.75);
+      }
+    }
+  }
+}
+
+.photo-modal-content-image {
+  max-height: 75vh;
+  min-height: 300px;
+  max-width: calc(50.2501vh);
+  min-width: calc(201px);
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+  }
+}

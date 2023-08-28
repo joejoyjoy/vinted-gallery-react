@@ -1,16 +1,14 @@
 import { useContext } from "react";
 import { UserLikesContext } from "../../../context/LikesContext";
 import { RoutingContext } from "../../../context/RoutingContext";
+import Theme from "../../UI/theme/Theme";
 import { limitNumber } from "../../../utils/limitNumber";
 import HeartIcon from "../../../assets/svg/heart-regular.svg";
 import "./navBarComponent.scss";
-import Theme from "../../UI/theme/Theme";
-import { ModalContext } from "../../../context/ModalContext";
 
 const NavBarComponent = () => {
   const { userLikes } = useContext(UserLikesContext);
   const { handleHomePageChange } = useContext(RoutingContext);
-  const { isModalOpen, setIsModalOpen } = useContext(ModalContext);
 
   return (
     <header className="nav-bar-component">
@@ -33,9 +31,6 @@ const NavBarComponent = () => {
               <a href="https://www.pexels.com">Photos provided by Pexels</a>
             </div>
           </div>
-          <button onClick={() => setIsModalOpen(!isModalOpen)}>
-            OverFlow Hidden
-          </button>
           <div className="nav-bar-component__nav--wrapper__actions">
             <span className="nav-bar-component__nav--wrapper__actions--theme">
               <span>Theme:</span>
@@ -45,7 +40,7 @@ const NavBarComponent = () => {
               onClick={() => handleHomePageChange(false)}
               className="nav-bar-component__nav--wrapper__actions--liked"
             >
-              <img src={HeartIcon} />
+              <img src={HeartIcon} alt="Heart icon" />
               <div className="nav-bar-component__nav--wrapper__actions--liked__number">
                 <span>{limitNumber(userLikes.length)}</span>
               </div>

@@ -38,26 +38,22 @@
   }
 }
 
-@mixin button-default {
+@mixin button-primary($color, $border, $bg-hover) {
   padding: 0.9rem 1.5rem 0.6rem;
   min-width: 125px;
-  color: inherit;
+  color: $color;
   font-size: clamp(12px, 4.5vw, 18px);
-  border: 0.1em solid $color-secondary;
+  border: 0.1em solid $border;
   border-radius: 999px;
   background: none;
   transition: $transition;
 
   &:hover {
-    background-color: rgba($background-important_light, 0.85);
+    background-color: rgba($bg-hover, 0.85);
 
     .marked::after {
       width: 100%;
     }
-  }
-
-  .marked::after {
-    background-color: $color-important_dark;
   }
 
   @include devices(phone) {
@@ -66,41 +62,19 @@
   }
 }
 
-@mixin button-primary {
-  padding: 0.9rem 1.5rem 0.6rem;
-  min-width: 125px;
-  color: $color-important_light;
+@mixin simple-button($bg: none) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  color: inherit;
   font-size: clamp(12px, 4.5vw, 18px);
-  border: 0.1em solid rgba($color-primary_light, 0.55);
-  border-radius: 999px;
-  background-color: rgba($color-primary_light, 0.55);
-  transition: $transition;
-
-  &:hover {
-    background-color: rgba($color-primary_light, 0.85);
-
-    .marked::after {
-      width: 100%;
-    }
-  }
-
-  @include devices(phone) {
-    padding: 0.5rem 0.75rem 0.4rem;
-    min-width: 100px;
-  }
-}
-
-@mixin button-secondary {
-  padding: 1rem 1.5rem;
-  width: fit-content;
-  color: var(--color-primary);
-  font-size: 18px;
-  border: 0;
+  border: 0.1em solid rgba($color-secondary, 0.5);
   border-radius: 0.35rem;
-  background-color: var(--color-important);
+  background: $bg;
   transition: $transition;
 
   &:hover {
-    background-color: rgba(var(--color-important), 0.85);
+    border: 0.1em solid $color-secondary;
   }
 }

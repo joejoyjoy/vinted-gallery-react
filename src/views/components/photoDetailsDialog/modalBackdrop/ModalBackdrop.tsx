@@ -3,11 +3,11 @@ import { ModalContext } from "../../../../context/ModalContext";
 import "./modalBackdrop.scss";
 
 const ModalBackdrop = () => {
-  const { isModalOpen, setIsModalOpen } = useContext(ModalContext);
+  const { isModalOpen, closePhotoModal } = useContext(ModalContext);
 
   return (
     <div
-      onClick={() => setIsModalOpen(!isModalOpen)}
+      onClick={closePhotoModal}
       className={
         isModalOpen ? "modal-backdrop modal-backdrop--open" : "modal-backdrop"
       }

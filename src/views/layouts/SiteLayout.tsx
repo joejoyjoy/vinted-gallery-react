@@ -8,7 +8,7 @@ import "./siteLayout.scss";
 const SiteLayout = () => {
   return (
     <>
-      <div className="site-layout">
+      <div id="siteLayout" className="site-layout">
         <NavBarComponent />
         <main className="site-layout__responsive">
           <div className="site-layout__responsive--wrapper">

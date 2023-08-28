@@ -87,11 +87,15 @@
       }
 
       &__like {
-        @include button-default();
+        @include button-primary(inherit, $color-secondary, $background-important_light);
+        .marked::after {
+          background-color: $color-important_dark;
+        }
       }
 
       &__more {
-        @include button-primary();
+        @include button-primary($color-important_light, rgba($color-primary_light, 0.55), $color-primary_light);
+        background-color: rgba($color-primary_light, 0.55);
       }
     }
   }

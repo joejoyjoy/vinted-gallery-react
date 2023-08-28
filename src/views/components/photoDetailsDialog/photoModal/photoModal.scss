@@ -3,66 +3,76 @@
 .photo-modal {
   position: fixed;
   display: none;
-  align-items: stretch;
-  justify-content: space-between;
-  flex-direction: column;
-  background-color: #fff;
-  top: 20px;
-  left: 150px;
-  right: 150px;
-  border-radius: 0.35rem;
+  inset: 0;
+  overflow: auto;
   z-index: 30;
 
-  @include devices(md) {
-    left: 64px;
-    right: 64px;
-  }
-
-  @include devices(sm) {
-    top: 3.5rem;
-    left: 0;
-    right: 0;
-    border-radius: 0;
-  }
-
-  &__wrapper {
-    position: relative;
-    padding: 30px;
+  &__padding {
+    padding: 20px 150px;
 
     @include devices(md) {
-      padding: 15px;
+      padding: 20px 64px;
     }
 
-    &--close {
-      position: absolute;
-      left: -4rem;
-      top: 1rem;
-      background: none;
-      color: inherit;
-      border: none;
+    @include devices(sm) {
       padding: 0;
-      font: inherit;
-      outline: inherit;
+      padding-top: 55px;
+    }
+
+    &--wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      position: relative;
+      padding: 30px;
+      border-radius: 0.35rem;
+      background-color: var(--color-primary);
 
       @include devices(md) {
-        top: 1rem;
-        left: -3rem;
+        gap: 15px;
+        padding: 15px;
       }
 
       @include devices(sm) {
-        top: -2.8rem;
-        left: 0.5rem;
+        border-radius: 0;
       }
 
-      img {
-        display: block;
-        width: 32px;
-        height: 32px;
+      &__close {
+        position: absolute;
+        left: -4rem;
+        top: 1rem;
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        outline: inherit;
+
+        @include devices(md) {
+          top: 1rem;
+          left: -3rem;
+        }
+
+        @include devices(sm) {
+          top: -2.8rem;
+          left: 0.5rem;
+        }
+
+        img {
+          display: block;
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      &__no-data {
+        display: flex;
+        justify-content: center;
       }
     }
   }
 }
 
 .photo-modal--open {
-  display: flex;
+  display: block;
 }

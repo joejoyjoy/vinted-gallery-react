@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { ModalContext } from "../../../../context/ModalContext";
+import PhotoModalContent from "./photoModalContent";
 import Xmark from "../../../../assets/svg/xmark-solid.svg";
 import "./photoModal.scss";
 
 const PhotoModal = () => {
-  const { isModalOpen, setIsModalOpen } = useContext(ModalContext);
+  const { isModalOpen, userSelectedPhoto, closePhotoModal } =
+    useContext(ModalContext);
 
   return (
     <section
@@ -12,15 +14,22 @@ const PhotoModal = () => {
       role="dialog"
       tabIndex={-1}
     >
-      <div className="photo-modal__wrapper">
-        <button
-          onClick={() => setIsModalOpen(false)}
-          className="photo-modal__wrapper--close"
-        >
-          <img src={Xmark} alt="Close icons X mark" />
-        </button>
-        OKEY ther sdifi fiefi f isfhi ef hifsi h<br />
-        Nice work
+      <div onClick={closePhotoModal} className="photo-modal__padding">
+        <div className="photo-modal__padding--wrapper">
+          <button
+            onClick={closePhotoModal}
+            className="photo-modal__padding--wrapper__close"
+          >
+            <img src={Xmark} alt="Close icons X mark" />
+          </button>
+          {userSelectedPhoto !== undefined ? (
+            <PhotoModalContent data={userSelectedPhoto} />
+          ) : (
+            <div className="photo-modal__padding--wrapper__no-data">
+              No image selected
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
