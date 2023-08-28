@@ -1,0 +1,33 @@
+@import "../../../sass/";
+
+.back-to-top {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: $transition;
+  z-index: 10;
+
+  @include devices(md) {
+    right: 7.5px;
+    bottom: 7.5px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    padding: 1.1rem;
+    border: 3px solid var(--color-important);
+    border-radius: 0.35rem;
+    background-color: $color-main;
+  }
+}
+
+.back-to-top.collapse {
+  opacity: 0;
+  transform: translateY(125%);
+}

@@ -1,5 +1,6 @@
 import NavBarComponent from "../components/header";
 import HomePage from "../page";
+import BackToTop from "../UI/backToTop/BackToTop";
 import "./siteLayout.scss";
 
 const SiteLayout = () => {
@@ -11,6 +12,7 @@ const SiteLayout = () => {
           <HomePage />
         </div>
       </main>
+      <BackToTop />
     </div>
   );
 };
