@@ -5,7 +5,7 @@
   border-radius: 0.35rem;
   aspect-ratio: 3/2;
   overflow: hidden;
-  background-color: $background-color-important;
+  background-color: var(--background-important);
   background-size: cover;
   background-position: center;
 
@@ -36,11 +36,11 @@
     align-items: center;
     position: absolute;
     inset: 0;
-    color: #fff;
+    color: $color-primary_light;
     font-size: 21px;
     text-align: center;
     text-transform: capitalize;
-    background-color: rgba($background-color-important, 0.55);
+    background-color: rgba($background-important_light, 0.55);
     opacity: 0;
     transition: $transition;
 
@@ -60,7 +60,7 @@
         margin: 10px auto;
         height: 2px;
         width: 120px;
-        background-color: $background-color-primary;
+        background-color: $color-primary_light;
       }
     }
 
@@ -99,7 +99,7 @@
     padding: 0.6rem;
     border: 0;
     border-radius: 0.75rem;
-    background-color: #fff;
+    background-color: var(--color-primary);
 
     img {
       display: block;

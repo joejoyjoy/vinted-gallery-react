@@ -2,7 +2,8 @@ import { usePexelsPhotos } from "../../../hooks/usePexelsPhotos";
 import ImageCard from "../imageCard/ImageCard";
 import Spinner from "../../UI/spinner/Spinner";
 import { PhotoArr } from "../../types";
-import './allPhotosSection.scss'
+import "./allPhotosSection.scss";
+import { dummyJSON } from "../../../constants";
 
 const AllPhotosSection = () => {
   const { pictures, hasMore, elementRef } = usePexelsPhotos();
@@ -10,7 +11,7 @@ const AllPhotosSection = () => {
   return (
     <>
       <div className="all-photos-section-grid">
-        {pictures.map((photo: PhotoArr) => {
+        {dummyJSON.map((photo: PhotoArr) => {
           return <ImageCard key={photo.id} data={photo} />;
         })}
       </div>

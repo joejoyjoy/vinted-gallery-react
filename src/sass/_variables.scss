@@ -1,12 +1,41 @@
 /*** Website variables ***/
 
 /* COLORS */
-$color-primary: #007782;
-$color-secondary: #999999;
-$color-important: #171717;
+$color-primary_light: #fff;
+$color-primary_dark: #121212;
 
-$background-color-primary: #e7e7e7;
-$background-color-important: #28292b;
+$color-secondary: #999999;
+
+$color-text_light: #000;
+$color-text_dark: $color-primary_light;
+
+$color-main: #007782;
+
+$color-important_light: #171717;
+$color-important_dark: #e7e7e7;
+
+$background-primary_light: #e7e7e7;
+$background-primary_dark: #1e1e1e;
+
+$background-important_light: #28292b;
+$background-important_dark: #c3c5c5;
 
 /* TRANSITION */
 $transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+/* DATA THEME */
+html[data-theme="light"] {
+  --color-primary: #{$color-primary_light};
+  --color-text: #{$color-text_light};
+  --color-important: #{$color-important_light};
+  --background-primary: #{$background-primary_light};
+  --background-important: #{$background-important_light};
+}
+
+html[data-theme="dark"] {
+  --color-primary: #{$color-primary_dark};
+  --color-text: #{$color-text_dark};
+  --color-important: #{$color-important_dark};
+  --background-primary: #{$background-primary_dark};
+  --background-important: #{$background-important_dark};
+}

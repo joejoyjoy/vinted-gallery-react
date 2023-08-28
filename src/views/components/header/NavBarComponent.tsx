@@ -4,6 +4,7 @@ import { RoutingContext } from "../../../context/RoutingContext";
 import { limitNumber } from "../../../utils/limitNumber";
 import HeartIcon from "../../../assets/svg/heart-regular.svg";
 import "./navBarComponent.scss";
+import Theme from "../../UI/theme/Theme";
 
 const NavBarComponent = () => {
   const { userLikes } = useContext(UserLikesContext);
@@ -30,15 +31,21 @@ const NavBarComponent = () => {
               <a href="https://www.pexels.com">Photos provided by Pexels</a>
             </div>
           </div>
-          <button
-            onClick={() => handleHomePageChange(false)}
-            className="nav-bar-component__nav--wrapper__actions"
-          >
-            <img src={HeartIcon} />
-            <div className="nav-bar-component__nav--wrapper__actions--number">
-              <span>{limitNumber(userLikes.length)}</span>
-            </div>
-          </button>
+          <div className="nav-bar-component__nav--wrapper__actions">
+            <span className="nav-bar-component__nav--wrapper__actions--theme">
+              Theme:
+              <Theme />
+            </span>
+            <button
+              onClick={() => handleHomePageChange(false)}
+              className="nav-bar-component__nav--wrapper__actions--liked"
+            >
+              <img src={HeartIcon} />
+              <div className="nav-bar-component__nav--wrapper__actions--liked__number">
+                <span>{limitNumber(userLikes.length)}</span>
+              </div>
+            </button>
+          </div>
         </div>
       </nav>
     </header>

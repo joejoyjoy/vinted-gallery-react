@@ -37,26 +37,30 @@
   transition: $transition;
 
   &:hover {
-    background-color: rgba($background-color-important, 0.85);
+    background-color: rgba($background-important_light, 0.85);
 
     .marked::after {
       width: 100%;
     }
+  }
+
+  .marked::after {
+    background-color: $color-important_dark;
   }
 }
 
 @mixin button-primary {
   padding: 0.9rem 1.5rem 0.6rem;
   min-width: 125px;
-  color: $color-important;
+  color: $color-important_light;
   font-size: 18px;
-  border: 0.1em solid rgba(#fff, 0.55);
+  border: 0.1em solid rgba($color-primary_light, 0.55);
   border-radius: 999px;
-  background-color: rgba(#fff, 0.55);
+  background-color: rgba($color-primary_light, 0.55);
   transition: $transition;
 
   &:hover {
-    background-color: rgba(#fff, 0.85);
+    background-color: rgba($color-primary_light, 0.85);
 
     .marked::after {
       width: 100%;
@@ -67,14 +71,14 @@
 @mixin button-secondary {
   padding: 1rem 1.5rem;
   width: fit-content;
-  color: #fff;
+  color: var(--color-primary);
   font-size: 18px;
   border: 0;
   border-radius: 0.35rem;
-  background-color: $color-important;
+  background-color: var(--color-important);
   transition: $transition;
 
   &:hover {
-    background-color: rgba($color-important, 0.85);
+    background-color: rgba(var(--color-important), 0.85);
   }
 }
