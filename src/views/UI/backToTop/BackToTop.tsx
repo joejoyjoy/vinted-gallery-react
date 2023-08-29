@@ -1,5 +1,5 @@
-import ToTop from "../../../assets/svg/arrow-up-solid.svg";
-import useScrollPosition from "../../../hooks/useScrollPosition";
+import ToTop from "@assets/svg/arrow-up-solid.svg";
+import useScrollPosition from "@hooks/useScrollPosition";
 import "./backToTop.scss";
 
 const BackToTop = () => {

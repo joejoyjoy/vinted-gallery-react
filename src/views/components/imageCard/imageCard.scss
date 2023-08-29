@@ -2,6 +2,7 @@
 
 .image-card-component {
   position: relative;
+  max-width: 685px;
   border-radius: 0.35rem;
   aspect-ratio: 3/2;
   overflow: hidden;
@@ -37,7 +38,7 @@
     position: absolute;
     inset: 0;
     color: $color-primary_light;
-    font-size:clamp(16px, 5vw, 21px);
+    font-size: clamp(16px, 5vw, 21px);
     text-align: center;
     text-transform: capitalize;
     background-color: rgba($background-important_light, 0.55);
@@ -87,14 +88,22 @@
       }
 
       &__like {
-        @include button-primary(inherit, $color-secondary, $background-important_light);
+        @include button-primary(
+          inherit,
+          $color-secondary,
+          $background-important_light
+        );
         .marked::after {
           background-color: $color-important_dark;
         }
       }
 
       &__more {
-        @include button-primary($color-important_light, rgba($color-primary_light, 0.55), $color-primary_light);
+        @include button-primary(
+          $color-important_light,
+          rgba($color-primary_light, 0.55),
+          $color-primary_light
+        );
         background-color: rgba($color-primary_light, 0.55);
       }
     }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 const useScrollPosition = () => {
   const [needsButton, setNeedsButton] = useState(false);
+  
   const handleScroll = () => {
     const position = window.scrollY;
     if (position > 600) {

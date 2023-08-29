@@ -1,8 +1,8 @@
-import NavBarComponent from "../components/header";
-import ModalBackdrop from "../components/photoDetailsDialog/modalBackdrop/ModalBackdrop";
-import PhotoModal from "../components/photoDetailsDialog/photoModal/PhotoModal";
+import NavBarComponent from "@components/header";
+import ModalBackdrop from "@components/photoDetailsDialog/modalBackdrop";
+import PhotoModal from "@components/photoDetailsDialog/photoModal";
 import HomePage from "../page";
-import BackToTop from "../UI/backToTop/BackToTop";
+import BackToTop from "@UI/backToTop";
 import "./siteLayout.scss";
 
 const SiteLayout = () => {

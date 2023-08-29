@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
-import { ModalContext } from "../../../../context/ModalContext";
+import { ModalContext } from "@context/ModalContext";
 import PhotoModalContent from "./photoModalContent";
-import Xmark from "../../../../assets/svg/xmark-solid.svg";
+import Xmark from "@assets/svg/xmark-solid.svg";
 import "./photoModal.scss";
 
 const PhotoModal = () => {

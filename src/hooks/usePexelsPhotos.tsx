@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { PhotoArr } from "../views/types";
+import { PhotoArr } from "@views/types";
 
 const PEXELS_API_KEY = process.env.PEXELS_API_KEY;
 
@@ -7,7 +7,7 @@ interface PexelsResponse {
   photos: PhotoArr[];
 }
 
-export const usePexelsPhotos = () => {
+export const usePexelsPhotos = (use?: string, category?: string) => {
   const [pictures, setPictures] = useState<PhotoArr[]>([]);
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [pagination, setPagination] = useState<number>(1);
@@ -15,6 +15,11 @@ export const usePexelsPhotos = () => {
   const elementRef = useRef<HTMLDivElement | null>(null);
 
   const UriGetAllPictures = `https://api.pexels.com/v1/curated?orientation=landscape&page=${
+    pagination * 1
+  }&per_page=40
+  `;
+
+  const UriGetSearchedPhotos = `https://api.pexels.com/v1/search?query=${category}&page=${
     pagination * 1
   }&per_page=40
   `;
@@ -27,8 +32,16 @@ export const usePexelsPhotos = () => {
   };
 
   const fetchPicturesFromApi = async () => {
+    let apiUrl;
+
+    if (use === "getPicturesOfSameCategory") {
+      apiUrl = UriGetSearchedPhotos;
+    } else {
+      apiUrl = UriGetAllPictures;
+    }
+
     try {
-      const response = await fetch(UriGetAllPictures, {
+      const response = await fetch(apiUrl, {
         headers: {
           Authorization: `${PEXELS_API_KEY}`,
         },

@@ -1,10 +1,10 @@
 import { useState, useContext, useEffect } from "react";
-import { UserLikesContext } from "../../../context/LikesContext";
-import { ModalContext } from "../../../context/ModalContext";
-import { extractDataFromUrl } from "../../../utils/extractDataFromUrl";
-import ImageLoader from "../../UI/imageLoader/ImageLoader";
-import SvgHeart from "../../../assets/svg/heart-solid.svg";
-import { PhotoArr } from "../../types";
+import { UserLikesContext } from "@context/LikesContext";
+import { ModalContext } from "@context/ModalContext";
+import { extractDataFromUrl } from "@utils/extractDataFromUrl";
+import ImageLoader from "@UI/imageLoader";
+import SvgHeart from "@assets/svg/heart-solid.svg";
+import { PhotoArr } from "@views/types";
 import "./imageCard.scss";
 
 const ImageCard = ({ data }: { data: PhotoArr }) => {
@@ -12,9 +12,9 @@ const ImageCard = ({ data }: { data: PhotoArr }) => {
   const { original } = src;
   const [loaded, setLoaded] = useState<boolean>(false);
   const [isLiked, setIsLiked] = useState<boolean>(false);
+  const { openPhotoModal } = useContext(ModalContext);
   const { userLikes, addOneLike, isLikedPicture } =
     useContext(UserLikesContext);
-  const { openPhotoModal } = useContext(ModalContext);
 
   const lowQuality = "?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=20&w=30";
   const highQuality = "?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=340&w=525";

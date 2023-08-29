@@ -1,4 +1,4 @@
-import { LikedPhoto, PhotoArr } from "../views/types";
+import { LikedPhoto, PhotoArr } from "@views/types";
 
 export const constructArrayOfLikedPhoto = (data: PhotoArr): LikedPhoto => {
   const newArray = {

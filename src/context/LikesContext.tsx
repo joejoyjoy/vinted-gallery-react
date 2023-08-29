@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
-import { constructArrayOfLikedPhoto } from "../utils/constructArrayOfLikedPhoto";
-import { LikedPhoto, PhotoArr } from "../views/types";
+import { constructArrayOfLikedPhoto } from "@utils/constructArrayOfLikedPhoto";
+import { LikedPhoto, PhotoArr } from "@views/types";
 
 export interface UserLikesInterface {
   userLikes: Array<LikedPhoto>;
@@ -28,12 +28,14 @@ export default function UserLikesProvider({
 }: {
   children: ReactNode;
 }) {
-  const [userLikes, setUserLikes] = useState<LikedPhoto[]>(localUserLikes || []);
+  const [userLikes, setUserLikes] = useState<LikedPhoto[]>(
+    localUserLikes || []
+  );
 
   const addOneLike = (data: PhotoArr) => {
     const likedPhoto = constructArrayOfLikedPhoto(data);
 
-    if (likedPhoto.id.toString().length >= 8) {
+    try {
       const existingIndex = userLikes.findIndex(
         (liked) => liked.id === likedPhoto.id
       );
@@ -46,13 +48,13 @@ export default function UserLikesProvider({
         );
         setUserLikes(deleteUserLike);
       }
-    } else {
-      console.error("No such image ID recognized");
+    } catch (error) {
+      console.error("addOneLike Fn():", error);
     }
   };
 
   const isLikedPicture = (imageId: number) => {
-    if (imageId.toString().length >= 8) {
+    try {
       const existingIndex = userLikes.findIndex(
         (liked) => liked.id === imageId
       );
@@ -62,9 +64,10 @@ export default function UserLikesProvider({
       } else {
         return true;
       }
-    } else {
-      console.error("No such image ID recognized");
+    } catch (error) {
+      console.error("isLikedPicture Fn():", error);
     }
+
     return false;
   };
 

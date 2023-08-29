@@ -111,4 +111,15 @@
     font-weight: 500;
     margin: 0.5rem 0;
   }
+
+  &__grid {
+    @include grid-layout;
+  }
+
+  &__loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 128px;
+  }
 }

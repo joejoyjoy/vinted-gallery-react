@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
-import { PhotoArr } from "../views/types";
+import { PhotoArr } from "@views/types";
 
 export interface ModalInterface {
   isModalOpen: boolean;
@@ -18,24 +18,23 @@ const defaultState = {
 export const ModalContext = createContext(defaultState);
 
 export default function ModalProvider({ children }: { children: ReactNode }) {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(true); // make false!
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [userSelectedPhoto, setUserSelectedPhoto] = useState<
     PhotoArr | undefined
-  >({
-    id: 18112362,
-    url: "https://www.pexels.com/photo/city-france-street-rooftop-18112362/",
-    photographer: "Niklas Jeromin",
-    photographer_url: "https://www.pexels.com/@njeromin",
-    avg_color: "#7E7E80",
-    src: {
-      original:
-        "https://images.pexels.com/photos/18112362/pexels-photo-18112362.jpeg",
-    },
-  });
+  >(undefined);
 
   const openPhotoModal = (data: PhotoArr) => {
-    setUserSelectedPhoto(data);
-    setIsModalOpen(true);
+    if (userSelectedPhoto !== undefined) {
+      closePhotoModal();
+      setTimeout(() => {
+        setUserSelectedPhoto(data);
+        setIsModalOpen(true);
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }, 300);
+    } else {
+      setUserSelectedPhoto(data);
+      setIsModalOpen(true);
+    }
   };
 
   const closePhotoModal = () => {

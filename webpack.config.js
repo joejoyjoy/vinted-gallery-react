@@ -69,6 +69,17 @@ const config = {
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
+    alias: {
+      "@assets": path.resolve(__dirname, "src/assets"),
+      "@context": path.resolve(__dirname, "src/context"),
+      "@hooks": path.resolve(__dirname, "src/hooks"),
+      "@utils": path.resolve(__dirname, "src/utils"),
+      "@views": path.resolve(__dirname, "src/views"),
+      "@components": path.resolve(__dirname, "src/views/components"),
+      "@layouts": path.resolve(__dirname, "src/views/layouts"),
+      "@page": path.resolve(__dirname, "src/views/page"),
+      "@UI": path.resolve(__dirname, "src/views/UI"),
+    },
   },
 };
 

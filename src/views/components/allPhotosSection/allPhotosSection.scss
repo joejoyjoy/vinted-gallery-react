@@ -1,17 +1,7 @@
 @import "../../../sass/";
 
 .all-photos-section-grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
-
-  @include devices(md) {
-    gap: 1rem;
-  }
-
-  @include devices(xs) {
-    grid-template-columns: auto
-  }
+  @include grid-layout;
 }
 
 .all-photos-section-loader {

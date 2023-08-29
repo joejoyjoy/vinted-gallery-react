@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { UserLikesContext } from "../../../context/LikesContext";
-import { RoutingContext } from "../../../context/RoutingContext";
-import Theme from "../../UI/theme/Theme";
-import { limitNumber } from "../../../utils/limitNumber";
-import HeartIcon from "../../../assets/svg/heart-regular.svg";
+import { UserLikesContext } from "@context/LikesContext";
+import { RoutingContext } from "@context/RoutingContext";
+import Theme from "@UI/theme";
+import { limitNumber } from "@utils/limitNumber";
+import HeartIcon from "@assets/svg/heart-regular.svg";
 import "./navBarComponent.scss";
 
 const NavBarComponent = () => {

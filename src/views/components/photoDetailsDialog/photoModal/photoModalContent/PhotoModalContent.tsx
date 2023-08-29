@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import { UserLikesContext } from "../../../../../context/LikesContext";
-import { extractDataFromUrl } from "../../../../../utils/extractDataFromUrl";
-import { downloadImageFromUrl } from "../../../../../utils/downloadImageFromUrl";
-import HeartSolidIcon from "../../../../../assets/svg/heart-solid.svg";
-import HeartRegularIcon from "../../../../../assets/svg/heart-regular.svg";
-import { PhotoArr } from "../../../../types";
+import { UserLikesContext } from "@context/LikesContext";
+import { usePexelsPhotos } from "@hooks/usePexelsPhotos";
+import ImageCard from "@components/imageCard";
+import ImageLoader from "@UI/imageLoader";
+import Spinner from "@UI/spinner";
+import { extractDataFromUrl } from "@utils/extractDataFromUrl";
+import { downloadImageFromUrl } from "@utils/downloadImageFromUrl";
+import HeartSolidIcon from "@assets/svg/heart-solid.svg";
+import HeartRegularIcon from "@assets/svg/heart-regular.svg";
+import { PhotoArr } from "@views/types";
 import "./photoModalContent.scss";
-import ImageLoader from "../../../../UI/imageLoader/ImageLoader";
 
 const PhotoModalContent = ({ data }: { data: PhotoArr }) => {
   const { id, url, photographer, photographer_url, src } = data;
@@ -17,6 +20,11 @@ const PhotoModalContent = ({ data }: { data: PhotoArr }) => {
     useContext(UserLikesContext);
 
   const alt = extractDataFromUrl(url);
+
+  const { pictures, hasMore, elementRef } = usePexelsPhotos(
+    "getPicturesOfSameCategory",
+    alt
+  );
 
   const lowQuality = "?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=20&w=30";
   const highQuality = "?auto=compress&cs=tinysrgb&dpr=1&fit=crop";
@@ -93,6 +101,16 @@ const PhotoModalContent = ({ data }: { data: PhotoArr }) => {
       </div>
       <div className="photo-modal-content-more">
         <p className="photo-modal-content-more__title">More like this</p>
+        <div className="photo-modal-content-more__grid">
+          {pictures.map((photo: PhotoArr) => {
+            return <ImageCard key={photo.id} data={photo} />;
+          })}
+        </div>
+        {hasMore ? (
+          <div ref={elementRef} className="photo-modal-content-more__loader">
+            <Spinner />
+          </div>
+        ) : null}
       </div>
     </>
   );
