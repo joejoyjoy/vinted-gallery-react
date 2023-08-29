@@ -30,6 +30,7 @@ html[data-theme="light"] {
   --color-important: #{$color-important_light};
   --background-primary: #{$background-primary_light};
   --background-important: #{$background-important_light};
+  --background-shadow: #{$background-important_dark};
 }
 
 html[data-theme="dark"] {
@@ -38,4 +39,5 @@ html[data-theme="dark"] {
   --color-important: #{$color-important_dark};
   --background-primary: #{$background-primary_dark};
   --background-important: #{$background-important_dark};
+  --background-shadow: #{$background-important_light};
 }

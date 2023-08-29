@@ -9,6 +9,7 @@
   background-color: var(--background-important);
   background-size: cover;
   background-position: center;
+  box-shadow: 2px 2px var(--background-shadow);
 
   &:hover {
     .image-card-component__details {
