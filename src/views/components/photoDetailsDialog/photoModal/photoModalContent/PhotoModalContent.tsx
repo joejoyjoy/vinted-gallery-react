@@ -6,21 +6,27 @@ import HeartSolidIcon from "../../../../../assets/svg/heart-solid.svg";
 import HeartRegularIcon from "../../../../../assets/svg/heart-regular.svg";
 import { PhotoArr } from "../../../../types";
 import "./photoModalContent.scss";
+import ImageLoader from "../../../../UI/imageLoader/ImageLoader";
 
 const PhotoModalContent = ({ data }: { data: PhotoArr }) => {
   const { id, url, photographer, photographer_url, src } = data;
+  const { original } = src;
+  const [loaded, setLoaded] = useState<boolean>(false);
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const { userLikes, addOneLike, isLikedPicture } =
     useContext(UserLikesContext);
 
   const alt = extractDataFromUrl(url);
 
+  const lowQuality = "?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=20&w=30";
+  const highQuality = "?auto=compress&cs=tinysrgb&dpr=1&fit=crop";
+
   const onLike = (data: PhotoArr) => {
     addOneLike(data);
   };
 
   const downloadImage = async () => {
-    downloadImageFromUrl(src.original, alt);
+    downloadImageFromUrl(original, alt);
   };
 
   useEffect(() => {
@@ -32,7 +38,7 @@ const PhotoModalContent = ({ data }: { data: PhotoArr }) => {
       <div className="photo-modal-content-header">
         <a href={photographer_url} className="photo-modal-content-header__left">
           <p className="photo-modal-content-header__left--photographer">
-            Photo by {photographer} on Pexels
+            By {photographer}
           </p>
           <span className="photo-modal-content-header__left--socials">
             <p>Follow</p>
@@ -48,12 +54,12 @@ const PhotoModalContent = ({ data }: { data: PhotoArr }) => {
             {isLiked ? (
               <>
                 <img src={HeartSolidIcon} alt="Heart solid icon" />
-                Unlike
+                <span>Unlike</span>
               </>
             ) : (
               <>
                 <img src={HeartRegularIcon} alt="Heart regular icon" />
-                Like
+                <span>Like</span>
               </>
             )}
           </button>
@@ -61,18 +67,33 @@ const PhotoModalContent = ({ data }: { data: PhotoArr }) => {
             onClick={downloadImage}
             className="photo-modal-content-header__right--download"
           >
-            Free download
+            <span>free</span> download
           </button>
         </div>
       </div>
       <div className="photo-modal-content-image">
-        <img src={src.original} alt={alt} />
+        <div
+          className={`photo-modal-content-image__wrapper blur-loader ${
+            loaded ? "loaded" : "filter-blur"
+          }`}
+          style={{
+            backgroundColor: " ##e7e7e7",
+            backgroundImage: `url(${original + lowQuality})`,
+          }}
+        >
+          {!loaded && <ImageLoader />}
+          <img
+            src={original + highQuality}
+            alt={alt}
+            className="photo-modal-content-image__wrapper--image"
+            onLoad={() => setLoaded(true)}
+            loading="lazy"
+          />
+        </div>
       </div>
       <div className="photo-modal-content-more">
-        <p>More like this</p>
+        <p className="photo-modal-content-more__title">More like this</p>
       </div>
-      OKEY ther sdifi fiefi f isfhi ef hifsi h<br />
-      Nice work
     </>
   );
 };

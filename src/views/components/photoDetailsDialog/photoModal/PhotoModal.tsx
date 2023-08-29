@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ModalContext } from "../../../../context/ModalContext";
 import PhotoModalContent from "./photoModalContent";
 import Xmark from "../../../../assets/svg/xmark-solid.svg";
@@ -8,13 +8,31 @@ const PhotoModal = () => {
   const { isModalOpen, userSelectedPhoto, closePhotoModal } =
     useContext(ModalContext);
 
+  const handleParentClick = (event: Event) => {
+    if (event.target === event.currentTarget) {
+      closePhotoModal();
+    }
+  };
+
+  useEffect(() => {
+    const closeModalDiv = document.getElementById("closeModal");
+
+    if (closeModalDiv) {
+      closeModalDiv.addEventListener("click", handleParentClick);
+
+      return () => {
+        closeModalDiv.removeEventListener("click", handleParentClick);
+      };
+    }
+  }, []);
+
   return (
     <section
       className={isModalOpen ? "photo-modal photo-modal--open" : "photo-modal"}
       role="dialog"
       tabIndex={-1}
     >
-      <div onClick={closePhotoModal} className="photo-modal__padding">
+      <div id="closeModal" className="photo-modal__padding">
         <div className="photo-modal__padding--wrapper">
           <button
             onClick={closePhotoModal}
