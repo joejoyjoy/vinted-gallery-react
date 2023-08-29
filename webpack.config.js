@@ -85,7 +85,6 @@ const config = {
 
 if (currentTask == "build") {
   config.mode = "production";
-  config.entry = "./public/src/index.tsx";
   config.module.rules[0].use[0] = MiniCssExtractPlugin.loader;
   config.plugins.push(
     new MiniCssExtractPlugin({ filename: "main.[hash].css" }),
