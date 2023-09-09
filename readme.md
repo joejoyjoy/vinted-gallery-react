@@ -1,6 +1,3 @@
-maximun files to like before localstorage gets full: 8325 photos
-Furder impleemetacions: add IndexedDB to no limist
-
 `#homework-assignment` `#react` `#typescript` `#sass` `#pexels-api`
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-) <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" /> [![Netlify Status](https://api.netlify.com/api/v1/badges/a9cf8967-ebc5-4f69-b1cb-ce6065c97793/deploy-status)](https://app.netlify.com/sites/vinted-gallery/deploys)
@@ -54,7 +51,7 @@ Here are some potential areas for improvement in the application:
 3. Implementing responsive image features to improve loading time.
 4. Add support for different browsers to ensure compatibility and accessibility.
 5. Implement more comprehensive error handling and error messages to guide users effectively.
-6. As for now all liked photos are saved in LocalStorage with a maximum storage space. To prevent this, in further implementations I will use IndexedDB instead
+6. As for now all liked photos are saved in LocalStorage with a maximum storage space. To prevent this, in further implementations I will use IndexedDB instead.
 
 ## Deploy version
 
